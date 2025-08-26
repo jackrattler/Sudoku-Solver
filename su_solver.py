@@ -21,12 +21,15 @@ def display_board(board):
                 print ("\n", end = '')
 
 def find_empty(board):
+    emptys = []
     for i in range (9):
         for j in range (9):
             if board[i][j] == 0: 
-                return i,j      #if empty, return the position
-    
-    return False                #if no cells are empty, return false
+                emptys.append((i,j))      #if empty, add to the list
+
+    if emptys: return emptys            #return list of empty cells
+
+    else: return False                #if no cells are empty, return false
 
 
 def find_valid(board, pos):
@@ -47,19 +50,21 @@ def find_valid(board, pos):
 
     return digits
 
+#########start of program###########
 
 display_board(tst_board)
-input("Press Enter to solve")
+#input("Press Enter to solve")  
 
 #find an empty cell
-while find_empty:
-    empty_pos = find_empty(tst_board)                       
-    valids = find_valid(tst_board, empty_pos)               #find what numbers are valid for that cell   
+while find_empty(tst_board):
+    empty_pos = find_empty(tst_board) 
+    for i in empty_pos:                      
+        valids = find_valid(tst_board, i)               #find what numbers are valid for that cell   
 
-    if len(valids) == 1:                                        #if only 1 valid number
-        tst_board[empty_pos[0]][empty_pos[1]] = valids[0]       #insert that number to the board
+        if len(valids) == 1:                                        #if only 1 valid number
+            tst_board[i[0]][i[1]] = valids[0]       #insert that number to the board
 
-    else: break
+        else: continue
 
-
+print("\n\n")
 display_board(tst_board)
