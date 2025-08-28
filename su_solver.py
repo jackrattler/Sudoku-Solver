@@ -23,14 +23,14 @@ def display_board(board):
             if j == 8:
                 print ("\n", end = '')
 
-def find_empty(board):
-    emptys = []
+def find_empty():
+    empties = []
     for i in range (9):
         for j in range (9):
-            if board[i][j] == 0: 
-                emptys.append((i,j))      #if empty, add to the list
+            if tst_board[i][j] == 0: 
+                empties.append((i,j))      #if empty, add to the list
 
-    if emptys: return emptys            #return list of empty cells
+    if empties: return empties            #return list of empty cells
 
     else: return False                #if no cells are empty, return false
 
@@ -40,21 +40,21 @@ def find_valid(board, pos):
 
     for i in range(9):                                      #check against same row and column
         for j in range (9):
-            if board[pos[0]][i] in digits:
-                digits.remove(board[pos[0]][i])
+            if board[i][pos[1]] in digits and not (pos == (i,pos[1])):
+                digits.remove(board[i][pos[1]])
 
-            if board[j][pos[1]] in digits:
-                digits.remove(board[j][pos[1]])        
+            if board[pos[0]][j] in digits and not (pos == (pos[0],j)):
+                digits.remove(board[pos[0]][j])        
 
     for i in range(int(pos[0]/3)*3, int(pos[0]/3)*3 +3):      #check against 3x3 cell
         for j in range (int(pos[1]/3)*3, int(pos[1]/3)*3+3):
-            if board[i][j] in digits:
+            if board[i][j] in digits and not (pos[0], pos[1]) == (i, j):
                 digits.remove(board[i][j])
 
     return digits
 
 def find_uniques():
-    if not find_empty(tst_board): return True        #no empties means the puzzle has been solved
+    if not find_empty(): return True        #no empties means the puzzle has been solved
 
     for i in range(9):
         for j in range(9):
@@ -83,20 +83,36 @@ def find_uniques():
                     
 
 
-def brute(v_board):
-    pass
+def brute():
+    empties = find_empty()
+    if not empties: return True                                 #no empties- puzzle solved
+
+    pos = empties[0]                                            #take first empty
+
+    for x in valids_board[pos[0]][pos[1]]:                      #loop through the valids at first position
+        tst_board[pos[0]][pos[1]] = x    
+        valids = find_valid(tst_board, pos)                       #put valid (x) in there   
+        if x in valids:                     #if board still valid recurse
+            if brute():
+                return True
+            
+    tst_board[pos[0]][pos[1]] = 0                           #change it back to zero if board now invalid
+
+        
+
+
+    return False
                     
                             
 
-def is_valid(board):
-    pass
-
-def simple_solve(board):
     
 
-    while find_empty(tst_board):
-        empty_pos = find_empty(tst_board)                   #find all empty cells 
-        for i in empty_pos:                                 #and loop through them
+def simple_solve():
+    
+
+    while find_empty():
+        empty_cells = find_empty()                          #find all empty cells 
+        for i in empty_cells:                               #and loop through them
             valids = find_valid(tst_board, i)               #find what numbers are valid for that cell   
             valids_board[i[0]][i[1]] = valids               #store all valids to valids_board
 
@@ -105,7 +121,7 @@ def simple_solve(board):
                 valids_board[i[0]][i[1]] = 0                #remove any digits from the corresponding valids_board cell
                 continue
 
-            if len(valids) > 1 and i == empty_pos[-1]:      #if we exhaust the empties and still can't solve
+            if len(valids) > 1 and i == empty_cells[-1]:      #if we exhaust the empties and still can't solve
                 return False                                #get outta here
 
         #####find rows, columns or 3x3s where a digit is only valid for 1 element        
@@ -121,20 +137,24 @@ def simple_solve(board):
 
 
 #########start of program###########
-
+print("\n\nUnsolved board")
 display_board(tst_board)
+print("\n\n")
 #input("Press Enter to solve")  
-if simple_solve(tst_board):
+if simple_solve():
     display_board(tst_board)
-    print("\n\nSolved using the simple solve method")
+    print("\nSolved using the simple solve method")
 
 if find_uniques():
     display_board(tst_board)
-    print("\n\nSolved using 'find uniques' method")
+    print("\nSolved using 'find uniques' method")
 
+if brute():
+    display_board(tst_board)
+    print("\nSolved using brute force method")
 
 
 else:
 
-    print("\n\nI cannae do it captain. Here's how far I got")
+    print("I cannae do it captain. Here's how far I got")
     display_board(tst_board)
