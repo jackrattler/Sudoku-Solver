@@ -1,26 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkxyuvr2s5mmm"]
+[gd_scene load_steps=3 format=3 uid="uid://c2aqo77qcl5wq"]
 
+[ext_resource type="Theme" uid="uid://bmhc6n4g43sju" path="res://main.tres" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://douwwevst3n5n" path="res://grid_container.gd" id="1_ig7tw"]
 
-[node name="Node2D" type="Node2D"]
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="Control" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1152.0
-offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_edit_use_anchors_ = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="ColorRect" type="ColorRect" parent="AspectRatioContainer"]
 layout_mode = 2
-color = Color(0.360784, 0.690196, 0.411765, 1)
+color = Color(0.203922, 0.705882, 0.741176, 1)
 
-[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer"]
-layout_mode = 2
+[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer/ColorRect"]
+layout_mode = 0
+offset_right = 648.0
+offset_bottom = 648.0
+theme = ExtResource("1_0xm2m")
 columns = 9
 script = ExtResource("1_ig7tw")
+
+[connection signal="mouse_entered" from="AspectRatioContainer/ColorRect/GridContainer" to="AspectRatioContainer/ColorRect/GridContainer" method="_on_mouse_entered"]
