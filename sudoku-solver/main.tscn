@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkxyuvr2s5mmm"]
+
+[ext_resource type="Script" uid="uid://douwwevst3n5n" path="res://grid_container.gd" id="1_ig7tw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer"]
+layout_mode = 2
+color = Color(0.360784, 0.690196, 0.411765, 1)
+
+[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+columns = 9
+script = ExtResource("1_ig7tw")
