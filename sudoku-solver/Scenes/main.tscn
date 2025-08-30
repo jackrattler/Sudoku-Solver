@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2aqo77qcl5wq"]
+
+[ext_resource type="Theme" uid="uid://bmhc6n4g43sju" path="res://Settings/main.tres" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://douwwevst3n5n" path="res://Scripts/grid_container.gd" id="2_8gbba"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer"]
+layout_mode = 2
+color = Color(0.203922, 0.705882, 0.741176, 1)
+
+[node name="Line2D" type="Line2D" parent="AspectRatioContainer/ColorRect"]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(216, 0)
+points = PackedVector2Array(0, 0, 0, 648)
+default_color = Color(0.054902, 0.054902, 0.054902, 0.580392)
+
+[node name="Line2D2" type="Line2D" parent="AspectRatioContainer/ColorRect"]
+position = Vector2(432, 0)
+points = PackedVector2Array(0, 0, 0, 648)
+default_color = Color(0.054902, 0.054902, 0.054902, 0.580392)
+
+[node name="Line2D3" type="Line2D" parent="AspectRatioContainer/ColorRect"]
+position = Vector2(0, 216)
+points = PackedVector2Array(0, 0, 648, 0)
+default_color = Color(0.054902, 0.054902, 0.054902, 0.580392)
+
+[node name="Line2D4" type="Line2D" parent="AspectRatioContainer/ColorRect"]
+position = Vector2(1, 432)
+points = PackedVector2Array(0, 0, 648, 0)
+default_color = Color(0.054902, 0.054902, 0.054902, 0.580392)
+
+[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer/ColorRect"]
+layout_mode = 0
+offset_right = 648.0
+offset_bottom = 648.0
+theme = ExtResource("1_bo1nx")
+columns = 9
+script = ExtResource("2_8gbba")
