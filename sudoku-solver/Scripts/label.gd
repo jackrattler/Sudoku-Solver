@@ -1,6 +1,8 @@
 extends Label
 
 @onready var mouse_in := false
+@onready var m = load("res://Settings/label_mouse.tres")
+@onready var nm = load("res://Settings/label_no_mouse.tres")
 signal left_click 
 
 func _ready() -> void:
@@ -13,16 +15,15 @@ func _ready() -> void:
 	text = '0'
 	
 func _on_mouse_entered() -> void:
-	label_settings = load("res://Settings/label_mouse.tres") 
+	label_settings = m 
 	mouse_in = true
 
 func _on_mouse_exited() -> void:
-	label_settings = load("res://Settings/label_no_mouse.tres")
+	label_settings = nm
 	mouse_in = false
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("l_click") && mouse_in:
-		text = ''
 		left_click.emit(left_click.get_object())
 
 	
