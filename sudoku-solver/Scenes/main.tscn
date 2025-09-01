@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2aqo77qcl5wq"]
 
-[ext_resource type="Script" uid="uid://ngbosgn4h3mk" path="res://Scripts/main.gd" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://uiaf3cueh1lx" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="Theme" uid="uid://bmhc6n4g43sju" path="res://Settings/main.tres" id="1_bo1nx"]
-[ext_resource type="Script" uid="uid://douwwevst3n5n" path="res://Scripts/grid_container.gd" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://jjwks8464d16" path="res://Scripts/grid_container.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://bfpgxhuegapkj" path="res://Scripts/scroller.gd" id="4_jjvhh"]
 
 [node name="Control" type="Control"]
