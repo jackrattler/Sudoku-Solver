@@ -7,12 +7,13 @@ extends Control
 @onready var valids_board = []
 
 func _ready() -> void:
+	####initialise board####
 	for y in grid.GRID_SIZE:
 		var row = []
 		for x in grid.GRID_SIZE:
 			row.append(0)
 		board.append(row)
-		
+	######valids board#####	
 	for y in grid.GRID_SIZE:
 		var row = []
 		for x in grid.GRID_SIZE:
@@ -22,19 +23,24 @@ func _ready() -> void:
 		
 
 func _on_button_pressed() -> void:
+	####when 'Solve' button is pressed
 	board = grid.board.duplicate()
 	solve()
 
 
 func solve():
-	if simple_solve():
-		update_board()
-	#if find_uniques():			#need to fix function- 
-		#update_board()			#== operator sucks?
-	if brute():
-		update_board()
-	else:
-		print("not happenin")
+	while true:
+		if simple_solve():
+			break
+		if find_uniques():			#need to fix function- 
+			break
+		if brute():
+			break
+		else:	
+			print("not happenin")
+			break
+	update_board()
+	
 		
 	
 	
@@ -59,7 +65,7 @@ func simple_solve():
 			if len(valids) == 1:                            #if only 1 valid number
 				board[i[0]][i[1]] = valids[0]           #insert that number to the board
 				valids_board[i[0]][i[1]] = 0                #remove any digits from the corresponding valids_board cell
-				continue
+				simple_solve()
 
 			if len(valids) > 1 and i == empty_cells[-1]:      #if we exhaust the empties and still can't solve
 				return false                                #get outta here      
@@ -91,50 +97,59 @@ func find_uniques():    #prob need to figure out how to do the set arithmetic!!!
 
 	for i in range(9):
 		for j in range(9):
-			if not valids_board[i][j] == 0:                      #loop through valids_board searching for unsolved cells
+			if valids_board[i][j]:                      #loop through valids_board searching for unsolved cells
 				var pos = [i,j]                                   
-				var exclusive = valids_board[pos[0]][pos[1]]
-				for x in range(9):
+				var exclusive = valids_board[pos[0]][pos[1]].duplicate(true)
+				
+				for a in valids_board[pos[0]][pos[1]]:
+					for x in range(9):
+						if is_instance_of(valids_board[pos[0]][x], TYPE_ARRAY) and a in valids_board[pos[0]][x] and not [pos[0], x] == pos:
+							exclusive.erase(a)
+						if is_instance_of(valids_board[x][pos[1]], TYPE_ARRAY) and a in valids_board[x][pos[1]] and not [x, pos[1]] == pos:
+							exclusive.erase(a)
+						
+					for x in range (int(i/3), int(i/3) * 3 + 3):            #3x3 grid check
+						for y in range(int(j/3), int(j/3)* 3 + 3 ):
+							if is_instance_of(valids_board[x][y], TYPE_ARRAY) and a in valids_board[x][y] and not [x,y] == (pos):
+								exclusive.erase(a)
+								
+				'''for x in range(9):
 					if valids_board[i][x] and not [i,x] == (pos):        #if not the current cell and not a solved cell
-						exclusive = exclusive - valids_board[i][x]   #subtract the valids from our current cells valids  
+						exclusive = exclusive.append(valids_board[i][x])   #add all valids to exclusive array  
 				for y in range(9):
 					if valids_board[y][j] and not [y,j] == (pos):
-						exclusive = exclusive - valids_board[y][j]
+						exclusive = exclusive.append(valids_board[y][j])
 
 				for x in range (int(i/3), int(i/3) * 3 + 3):            #3x3 grid check
 					for y in range(int(j/3), int(j/3)* 3 + 3 ):
 						if valids_board[x][y] and not [x,y] == (pos):
-							exclusive = exclusive - valids_board[x][y]
+							exclusive = exclusive - valids_board[x][y]'''
 					
 				#if a digit is only valid for this cell within its row, column or 3x3 grid
 				#pop it in the board and remove the valids 
 				if len(exclusive) == 1:                                 
 					board[pos[0]][pos[1]] = exclusive[0]
 					valids_board[pos[0]][pos[1]] = 0
-					return find_uniques()               #if a cells solution has been found start again until no cell solutions are found
+					find_uniques()               #if a cells solution has been found start again until no cell solutions are found
 
 func find_valid(board, pos):         #find all valid digits at pos
 	var valids := Array(range(1,10))                             
 
 	for i in range(9):                                      
-		for j in range (9):
-				#check within the cells row ignoring current pos and remove invalid 
-			if board[i][pos[1]] in valids and not (pos == [i,pos[1]]):  
-				var p = valids.find(board[i][pos[1]])
-				valids.remove_at(p)
-				#check against column
-			if board[pos[0]][j] in valids and not (pos == [pos[0],j]):
-				var p = valids.find(board[pos[0]][j])
-				valids.remove_at(p) 
+			#check within the cells row ignoring current pos and remove invalid 
+		if board[i][pos[1]] in valids and not (pos == [i,pos[1]]):  
+			valids.erase(board[i][pos[1]])
+			#check against column
+		if board[pos[0]][i] in valids and not (pos == [pos[0],i]):
+			valids.erase(board[pos[0]][i])
 
 				#check against 3x3 cell
 	for i in range(int(pos[0]/3)*3, int(pos[0]/3)*3 +3):      
 		for j in range (int(pos[1]/3)*3, int(pos[1]/3)*3+3):
 			if board[i][j] in valids and not [pos[0], pos[1]] == [i, j]:
-				var p = valids.find(board[i][j])
-				valids.remove_at(p)
+				valids.erase(board[i][j])
 
-	return valids
+	return Array(valids)
 
 func update_board():
 	for y in 9:

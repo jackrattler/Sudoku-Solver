@@ -7,4 +7,4 @@ resource_name = "main"
 default_font = SubResource("SystemFont_ig7tw")
 default_font_size = 17
 Label/colors/font_color = Color(0, 0.0431373, 0.027451, 1)
-Label/colors/font_shadow_color = Color(0.054902, 0.741176, 0, 0.513726)
+Label/colors/font_shadow_color = Color(0, 0.12549, 0, 0.392157)

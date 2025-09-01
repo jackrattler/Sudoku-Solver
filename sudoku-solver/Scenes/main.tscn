@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2aqo77qcl5wq"]
+[gd_scene load_steps=5 format=3 uid="uid://c2aqo77qcl5wq"]
 
 [ext_resource type="Script" uid="uid://ngbosgn4h3mk" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="Theme" uid="uid://bmhc6n4g43sju" path="res://Settings/main.tres" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://douwwevst3n5n" path="res://Scripts/grid_container.gd" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://bfpgxhuegapkj" path="res://Scripts/scroller.gd" id="4_jjvhh"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -64,4 +65,114 @@ size_flags_vertical = 4
 theme = ExtResource("1_bo1nx")
 text = "Solve!"
 
+[node name="Line2D2" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(252, 72)
+points = PackedVector2Array(0, 0, 648, 0)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D4" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(252, 144)
+points = PackedVector2Array(0, 0, 648, 0)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D13" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(252, 504)
+points = PackedVector2Array(0, 0, 648, 0)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D12" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(252, 360)
+points = PackedVector2Array(0, 0, 648, 0)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D7" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(252, 288)
+points = PackedVector2Array(0, 0, 648, 0)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D6" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(252, 576)
+points = PackedVector2Array(0, 0, 648, 0)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D8" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(324, 0)
+points = PackedVector2Array(0, 0, 0, 648)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D9" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(396, 0)
+points = PackedVector2Array(0, 0, 0, 648)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D10" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(540, 0)
+points = PackedVector2Array(0, 0, 0, 648)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D11" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(612, 0)
+points = PackedVector2Array(0, 0, 0, 648)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D5" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(756, 0)
+points = PackedVector2Array(0, 0, 0, 648)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="Line2D3" type="Line2D" parent="."]
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+position = Vector2(828, 0)
+points = PackedVector2Array(0, 0, 0, 648)
+width = 4.0
+default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+
+[node name="VScrollBar" type="VScrollBar" parent="."]
+layout_mode = 0
+offset_left = 1012.0
+offset_top = 250.0
+offset_right = 1032.0
+offset_bottom = 350.0
+rotation = 3.14159
+script = ExtResource("4_jjvhh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1021.0
+offset_top = 183.0
+offset_right = 1138.0
+offset_bottom = 234.0
+text = "Slide to adjust
+Font Size"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 962.0
+offset_top = 42.0
+offset_right = 1079.0
+offset_bottom = 93.0
+text = "Press 'r' to restart"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="VScrollBar" to="VScrollBar" method="_on_value_changed"]
