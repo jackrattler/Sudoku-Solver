@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1756716671
+export_presets.cfg::TextFile/TextFile::-1::1756560369::0::1::::<><><>0<>0<><>::
+icon.svg::CompressedTexture2D/CompressedTexture2D::8079168865288004912::1756415347::1756471858::1::::<><><>0<>0<>eba30b3c5b94f684f842cdd54012595d<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://Scenes/::1756637478
+button.gd::GDScript/GDScript::2826748682107520619::1756539206::0::1::::<>Button<><>0<>0<><>::
+label.tscn::PackedScene::9020004060687760737::1756629372::0::1::::<><><>0<>0<><>::uid://b4r4vrcqkt8ds::::res://Scripts/label.gd<>uid://c5cqoq8mkxbo::::res://Settings/label_no_mouse.tres
+main.tscn::PackedScene::6668938349523061612::1756637478::0::1::::<><><>0<>0<><>::uid://ngbosgn4h3mk::::res://Scripts/main.gd<>uid://bmhc6n4g43sju::::res://Settings/main.tres<>uid://douwwevst3n5n::::res://Scripts/grid_container.gd
+::res://Scripts/::1756636709
+grid_container.gd::GDScript::8184568721778359885::1756629722::0::1::::<>GridContainer<><>0<>0<><>::
+label.gd::GDScript/GDScript::4458790762204963124::1756544668::0::1::::<>Label<><>0<>0<><>::
+main.gd::GDScript::924927907245065914::1756636709::0::1::::<>Control<><>0<>0<><>::
+::res://Settings/::1756629935
+label_mouse.tres::LabelSettings::8073187892247572020::1756629935::0::1::::<><><>0<>0<><>::
+label_no_mouse.tres::LabelSettings::202459788145466684::1756629883::0::1::::<><><>0<>0<><>::
+main.tres::Theme/Theme::3243314973139860670::1756542183::0::1::::<><><>0<>0<><>::
