@@ -16,7 +16,7 @@ extends GridContainer
 							
 @onready var label_board = []
 @onready var board = []
-@onready var coor = []
+@onready var coor = [0,0]
 @onready var main = $"../.."
 
 func _ready() -> void:

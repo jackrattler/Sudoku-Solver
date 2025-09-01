@@ -5,3 +5,5 @@ res://Scripts/scroller.gd
 res://Settings/label_mouse.tres
 res://Settings/label_no_mouse.tres
 res://Settings/main.tres
+res://Scenes/label.tscn
+res://Scripts/label.gd

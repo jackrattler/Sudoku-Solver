@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt6dbt0tcstbh"]
+
+[ext_resource type="Script" uid="uid://j3lyc8h58xuq" path="res://Scripts/label.gd" id="1_1ytir"]
+[ext_resource type="LabelSettings" uid="uid://c5cqoq8mkxbo" path="res://Settings/label_no_mouse.tres" id="1_f2qpl"]
+
+[node name="Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 24.0
+label_settings = ExtResource("1_f2qpl")
+script = ExtResource("1_1ytir")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
