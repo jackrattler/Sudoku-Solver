@@ -1,2 +1,0 @@
-﻿35699
-/snap/godot-4/9/Godot_v4.4-stable_mono_linux.x86_64
