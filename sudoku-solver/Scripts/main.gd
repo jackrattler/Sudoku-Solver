@@ -37,7 +37,7 @@ func solve():
 		if brute():
 			break
 		else:	
-			print("not happenin")
+			$Label2.text = 'not happenin'
 			break
 	update_board()
 	
@@ -61,7 +61,9 @@ func simple_solve():
 		for i in empty_cells:                               #and loop through them
 			var valids = find_valid(board, i)               #find what numbers are valid for that cell   
 			valids_board[i[0]][i[1]] = valids if valids is not bool else []          #store all valids to valids_board
-
+			if valids_board[i[0]][i[1]] == []:			#if nothing valid at an empty cell
+				
+				return false
 			if len(valids) == 1:                            #if only 1 valid number
 				board[i[0]][i[1]] = valids[0]           #insert that number to the board
 				valids_board[i[0]][i[1]] = 0                #remove any digits from the corresponding valids_board cell
@@ -87,10 +89,10 @@ func brute():
 			
 	board[pos[0]][pos[1]] = 0                           #change it back to zero if board now invalid
 
-		
-
-
 	return false
+
+
+	
 	
 func find_uniques():    #prob need to figure out how to do the set arithmetic!!!!!!!
 	if not find_empty(): return true      #no empties means the puzzle has been solved

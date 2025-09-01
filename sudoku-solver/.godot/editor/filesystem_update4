@@ -1,3 +1,4 @@
 res://Scenes/label.tscn
 res://Settings/label_no_mouse.tres
+res://Scripts/main.gd
 res://Scenes/main.tscn
