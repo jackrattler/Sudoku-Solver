@@ -168,6 +168,7 @@ text = "Slide to adjust
 Font Size"
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 962.0
 offset_top = 42.0
 offset_right = 1079.0
