@@ -43,7 +43,7 @@ func _ready() -> void:
 			add_child(cell)
 			btn_board[y][x] = cell
 			#cell.left_click.connect(on_click)
-			cell.clicked.connect(on_click)
+			cell.focused.connect(on_click)
 			
 	for y in GRID_SIZE:
 		for x in GRID_SIZE:

@@ -7,14 +7,10 @@ func _ready() -> void:
 	alignment = HORIZONTAL_ALIGNMENT_CENTER
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	
-signal clicked
+signal focused
 func _on_pressed() -> void:
-	clicked.emit(self)
+	focused.emit(self)
 
 
-func _on_mouse_entered() -> void:
-	pass # Replace with function body.
-
-
-func _on_mouse_exited() -> void:
-	pass # Replace with function body.
+func _on_focus_entered() -> void:
+	focused.emit(self)
