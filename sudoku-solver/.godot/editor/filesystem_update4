@@ -1,4 +1,6 @@
-res://Scenes/label.tscn
-res://Settings/label_no_mouse.tres
-res://Scripts/main.gd
 res://Scenes/main.tscn
+res://Settings/btn_def.tres
+res://Scenes/button.tscn
+res://Scripts/scroller.gd
+res://Scripts/main.gd
+res://Scripts/grid_container.gd

@@ -1,10 +1,10 @@
 extends Control
 
-@onready var grid = get_node("AspectRatioContainer/GridContainer")
-@onready var button = get_node("Button")
+@onready var grid = $HBoxContainer/GridContainer
+@onready var button = $HBoxContainer/Button
 
-@onready var board = []
-@onready var valids_board = []
+@onready var board := []
+@onready var valids_board := []
 
 func _ready() -> void:
 	####initialise board####
@@ -19,6 +19,8 @@ func _ready() -> void:
 		for x in grid.GRID_SIZE:
 			row.append(0)
 		valids_board.append(row)		
+	
+	button.grab_focus()
 			
 		
 
@@ -37,7 +39,7 @@ func solve():
 		if brute():
 			break
 		else:	
-			$Label2.text = 'not happenin'
+			$Label.text = 'not happenin'
 			break
 	update_board()
 	
@@ -59,7 +61,7 @@ func simple_solve():
 	while find_empty():
 		var empty_cells = find_empty()                          #find all empty cells 
 		for i in empty_cells:                               #and loop through them
-			var valids = find_valid(board, i)               #find what numbers are valid for that cell   
+			var valids = find_valid(i)               #find what numbers are valid for that cell   
 			valids_board[i[0]][i[1]] = valids if valids is not bool else []          #store all valids to valids_board
 			if valids_board[i[0]][i[1]] == []:			#if nothing valid at an empty cell
 				
@@ -82,7 +84,7 @@ func brute():
 
 	for x in valids_board[pos[0]][pos[1]]:                      #loop through the valids at first position
 		board[pos[0]][pos[1]] = x    
-		var valids = find_valid(board, pos)                       #put valid (x) in there   
+		var valids = find_valid(pos)                       #put valid (x) in there   
 		if x in valids:                                     #if board still valid, 
 			if brute():                                     #recurse
 				return true
@@ -134,7 +136,8 @@ func find_uniques():    #prob need to figure out how to do the set arithmetic!!!
 					valids_board[pos[0]][pos[1]] = 0
 					find_uniques()               #if a cells solution has been found start again until no cell solutions are found
 
-func find_valid(board, pos):         #find all valid digits at pos
+func find_valid(pos):         #find all valid digits at pos
+	board = grid.board.duplicate()
 	var valids := Array(range(1,10))                             
 
 	for i in range(9):                                      
@@ -156,4 +159,4 @@ func find_valid(board, pos):         #find all valid digits at pos
 func update_board():
 	for y in 9:
 		for x in 9:
-			grid.label_board[y][x].text = str(board [y][x])
+			grid.btn_board[y][x].text = str(board [y][x])

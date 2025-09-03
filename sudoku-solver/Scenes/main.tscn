@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2aqo77qcl5wq"]
+[gd_scene load_steps=7 format=3 uid="uid://c2aqo77qcl5wq"]
 
 [ext_resource type="Script" uid="uid://uiaf3cueh1lx" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="Theme" uid="uid://bmhc6n4g43sju" path="res://Settings/main.tres" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://jjwks8464d16" path="res://Scripts/grid_container.gd" id="2_8gbba"]
 [ext_resource type="Script" uid="uid://bfpgxhuegapkj" path="res://Scripts/scroller.gd" id="4_jjvhh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kry3j"]
+bg_color = Color(0.6, 0.6, 0.0509804, 1)
+
+[sub_resource type="Theme" id="Theme_21xkr"]
+Button/styles/hover = SubResource("StyleBoxFlat_kry3j")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,166 +20,109 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8gbba")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-color = Color(0.203922, 0.705882, 0.741176, 1)
+offset_left = 178.0
+offset_right = 1001.0
+offset_bottom = 649.0
+alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Press 'r' 
+to restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Slide to adjust
+Font Size"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSlider" type="VSlider" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+script = ExtResource("4_jjvhh")
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("1_bo1nx")
 columns = 9
 script = ExtResource("2_8gbba")
 
-[node name="Line2D" type="Line2D" parent="AspectRatioContainer"]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(468, 0)
-points = PackedVector2Array(0, 0, 0, 648)
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
 
-[node name="Line2D2" type="Line2D" parent="AspectRatioContainer"]
-position = Vector2(684, 0)
-points = PackedVector2Array(0, 0, 0, 648)
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D3" type="Line2D" parent="AspectRatioContainer"]
-position = Vector2(252, 216)
-points = PackedVector2Array(0, 0, 648, 0)
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D4" type="Line2D" parent="AspectRatioContainer"]
-position = Vector2(253, 432)
-points = PackedVector2Array(0, 0, 648, 0)
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-offset_left = 990.0
-offset_top = 306.0
-offset_right = 1047.0
-offset_bottom = 356.0
 size_flags_horizontal = 8
 size_flags_vertical = 4
-theme = ExtResource("1_bo1nx")
+theme = SubResource("Theme_21xkr")
 text = "Solve!"
 
-[node name="Line2D2" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(252, 72)
-points = PackedVector2Array(0, 0, 648, 0)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D4" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(252, 144)
-points = PackedVector2Array(0, 0, 648, 0)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D13" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(252, 504)
-points = PackedVector2Array(0, 0, 648, 0)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D12" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(252, 360)
-points = PackedVector2Array(0, 0, 648, 0)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D7" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(252, 288)
-points = PackedVector2Array(0, 0, 648, 0)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D6" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(252, 576)
-points = PackedVector2Array(0, 0, 648, 0)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D8" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(324, 0)
-points = PackedVector2Array(0, 0, 0, 648)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D9" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(396, 0)
-points = PackedVector2Array(0, 0, 0, 648)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D10" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(540, 0)
-points = PackedVector2Array(0, 0, 0, 648)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D11" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(612, 0)
-points = PackedVector2Array(0, 0, 0, 648)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D5" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(756, 0)
-points = PackedVector2Array(0, 0, 0, 648)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="Line2D3" type="Line2D" parent="."]
-modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
-position = Vector2(828, 0)
-points = PackedVector2Array(0, 0, 0, 648)
-width = 4.0
-default_color = Color(0.054902, 0.054902, 0.054902, 0.870588)
-
-[node name="VScrollBar" type="VScrollBar" parent="."]
-layout_mode = 0
-offset_left = 1012.0
-offset_top = 250.0
-offset_right = 1032.0
-offset_bottom = 350.0
-rotation = 3.14159
-script = ExtResource("4_jjvhh")
-
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1021.0
-offset_top = 183.0
-offset_right = 1138.0
-offset_bottom = 234.0
-text = "Slide to adjust
-Font Size"
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 959.0
+offset_top = 59.0
+offset_right = -94.0
+offset_bottom = -424.0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.713726, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 962.0
-offset_top = 42.0
-offset_right = 1079.0
-offset_bottom = 93.0
-text = "Press 'r' to restart"
+offset_left = 509.0
+offset_top = 3.0
+offset_right = 515.0
+offset_bottom = 649.0
+color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="value_changed" from="VScrollBar" to="VScrollBar" method="_on_value_changed"]
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 721.0
+offset_top = 2.0
+offset_right = 727.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 220.0
+offset_right = 308.0
+offset_bottom = 852.0
+rotation = -1.5708
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 439.0
+offset_right = 306.0
+offset_bottom = 1072.0
+rotation = -1.5708
+color = Color(0, 0, 0, 1)
+
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/VSlider" to="HBoxContainer/VBoxContainer/VSlider" method="_on_value_changed"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

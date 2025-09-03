@@ -1,9 +1,11 @@
-Label
-VScrollBar
 VSlider
+ColorRect
+VBoxContainer
+Label
+AspectRatioContainer
+HBoxContainer
 Button
+VScrollBar
 Line2D
 GridContainer
-ColorRect
-AspectRatioContainer
 Control
